@@ -1,0 +1,57 @@
+[
+  {
+    "id": 1,
+    "name": "Bharath Ambati",
+    "role": "Investor",
+    "company": "OXYBRICKS.WORLD",
+    "rating": 5,
+    "image": "./assets/images/t1.jpeg",
+    "testimonial": "I never thought I would have the opportunity to be a part of such great deals in Hyderabad as an investor. It has been an amazing experience with OXYBRICKS.WORLD. It is a brand that embodies trust and vision.",
+    "tag": "Fractional Real Estate",
+    "location": "Europe"
+  },
+  {
+    "id": 2,
+    "name": "Venu Kuchipudi",
+    "role": "Investor",
+    "company": "OXYLOANS",
+    "rating": 5,
+    "image": "https://gcavocats.ca/wp-content/uploads/2018/09/man-avatar-icon-flat-vector-19152370-1.jpg",
+    "testimonial": "OXYLOANS team is very professional and responsive and mainly transparent which is missing mostly in other businesses today. Our Company CEO Mr. Radha Krishna Garu is working very hard to take the Organization to next level with good partnership firms and he has very good knowledge on economics. I admire leadership skills of Radha Garu on P2P business.",
+    "tag": "P2P Lending",
+    "location": "India"
+  },
+  {
+    "id": 3,
+    "name": "Ramanjaneyulu Gunda",
+    "role": "Investor",
+    "company": "OXYBRICKS.WORLD",
+    "rating": 5,
+    "image": "assets/images/t3.jpeg",
+    "testimonial": "OXYBRICKS.WORLD is a highly innovative property technology platform, and I am impressed with the leadership of its founder, Radhakrishna Thatavarti. I have great confidence in the company's progress in a short period of time. I feel fortunate to have been a part of their first deal, and I would like to express my gratitude to Radha for this opportunity.",
+    "tag": "Fractional Property Investment",
+    "location": "Andhra Pradesh, India"
+  },
+  {
+    "id": 4,
+    "name": "Raghu K",
+    "role": "Investor",
+    "company": "OXYLOANS",
+    "rating": 5,
+    "image": "https://cdn.pixabay.com/photo/2018/08/28/12/41/avatar-3637425_960_720.png",
+    "testimonial": "I came across Oxyloans some 8-9 months ago and since then there is no looking back. It's a perfect platform for investment opportunity and a channel to generate parallel income. This is run by professional leadership and a motivated team.",
+    "tag": "P2P Lending",
+    "location": "India"
+  },
+  {
+    "id": 5,
+    "name": "Gopu Satish",
+    "role": "Investor",
+    "company": "OXY GROUP",
+    "rating": 5,
+    "image": "assets/images/t5.jpeg",
+    "testimonial": "I have had an exciting and encouraging experience being part of the OXY GROUP for over a year. I am grateful to Radhakrishna Thatavarti and his team for their insightful and practical approach to venturing into new avenues, which has created opportunities for investors to earn good returns. I am happy to have been associated with their new venture, OXYBRICKS.WORLD, from the beginning.",
+    "tag": "Fractional Real Estate",
+    "location": "Hyderabad"
+  }
+]

@@ -1,81 +1,178 @@
 import React from "react";
 import HEROIMAGE from "../assets/img/founder-page.png";
 
+// your decorative elements
+import BG_SHAPE_1 from "../assets/img/bg-shape-1.png";
+import BG_SHAPE_2 from "../assets/img/bg-shape-2.png";
+import BG_SHAPE_3 from "../assets/img/bg-shape-3.png";
+import BG_SHAPE_4 from "../assets/img/bg-shape-4.png";
+
 const OxyGlobalHero: React.FC = () => {
   return (
-    <section className="relative overflow-hidden bg-[#f7f9fc] px-5 py-12 sm:px-6 md:px-10 lg:px-16 xl:px-20">
-      {/* Background blur effects */}
-      <div className="absolute left-[-60px] top-[-40px] h-56 w-56 rounded-full bg-cyan-100/50 blur-3xl sm:h-72 sm:w-72" />
-      <div className="absolute right-[-40px] top-10 h-64 w-64 rounded-full bg-blue-100/50 blur-3xl sm:h-80 sm:w-80" />
-      <div className="absolute bottom-0 left-1/2 h-40 w-40 -translate-x-1/2 rounded-full bg-sky-100/40 blur-3xl" />
+    <section className="relative overflow-hidden bg-white px-6 pt-20 pb-12 sm:pt-24 sm:pb-14 md:px-10 md:pt-28 md:pb-16 lg:px-16 lg:pt-32 lg:pb-20 xl:px-20">
+      <style>{`
+        @keyframes floatY {
+          0%, 100% { transform: translateY(0px); }
+          50% { transform: translateY(-12px); }
+        }
 
-      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-16">
-        {/* Left Content */}
+        @keyframes floatX {
+          0%, 100% { transform: translateX(0px); }
+          50% { transform: translateX(8px); }
+        }
+
+        @keyframes softRotate {
+          0% { transform: rotate(0deg); }
+          100% { transform: rotate(360deg); }
+        }
+
+        .animate-floatY {
+          animation: floatY 5s ease-in-out infinite;
+        }
+
+        .animate-floatX {
+          animation: floatX 7s ease-in-out infinite;
+        }
+
+        .animate-softRotate {
+          animation: softRotate 20s linear infinite;
+        }
+
+        .word-underline {
+          position: relative;
+          display: inline-block;
+          padding-bottom: 6px;
+          white-space: nowrap;
+        }
+
+        .word-underline::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 4px;
+          border-radius: 999px;
+          background: currentColor;
+          transform: scaleX(0);
+          transform-origin: left;
+          opacity: 0;
+          animation: underlineMove 10s infinite;
+        }
+
+        @keyframes underlineMove {
+          0%, 20%, 100% {
+            transform: scaleX(0);
+            opacity: 0;
+          }
+          4% {
+            transform: scaleX(0);
+            opacity: 1;
+          }
+          10%, 16% {
+            transform: scaleX(1);
+            opacity: 1;
+          }
+          20% {
+            transform: scaleX(0);
+            opacity: 0;
+          }
+        }
+
+        .word-people::after {
+          animation-delay: 0s;
+        }
+
+        .word-platforms::after {
+          animation-delay: 2.5s;
+        }
+
+        .word-products::after {
+          animation-delay: 5s;
+        }
+
+        .word-capital::after {
+          animation-delay: 7.5s;
+        }
+      `}</style>
+
+      <img
+        src={BG_SHAPE_1}
+        alt=""
+        className="pointer-events-none absolute left-14 top-20 hidden w-16 opacity-20 sm:block md:w-24 lg:w-30"
+      />
+
+      <img
+        src={BG_SHAPE_2}
+        alt=""
+        className="pointer-events-none absolute right-[0%] bottom-4 hidden w-full opacity-20 md:block lg:w-60"
+      />
+
+      <img
+        src={BG_SHAPE_3}
+        alt=""
+        className="pointer-events-none absolute left-[0%] bottom-14 hidden w-36 opacity-35 lg:block"
+      />
+
+      <img
+        src={BG_SHAPE_4}
+        alt=""
+        className="pointer-events-none absolute right-[45%] top-[22%] hidden w-36 opacity-15 lg:block"
+      />
+
+      <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
+        {/* LEFT CONTENT - now first on mobile */}
         <div className="order-1 text-center lg:order-1 lg:text-left">
-          <p className="mb-4 inline-block rounded-full border border-blue-100 bg-white px-4 py-2 text-[11px] font-semibold tracking-wide text-[#2563eb] shadow-sm sm:text-sm">
+          <p className="mb-4 inline-block rounded-full border border-[#2F5FAA]/20 bg-white px-4 py-2 text-[11px] font-semibold tracking-[0.18em] text-[#2F5FAA] shadow-sm sm:text-xs">
             FUTURE READY SOFTWARE TECHNOLOGY
           </p>
 
-          <h1 className="mx-auto max-w-3xl text-3xl font-extrabold leading-tight tracking-tight text-[#1e3a8a] sm:text-4xl md:text-5xl xl:text-[60px] lg:mx-0">
-            Build Powerful Digital Platforms for{" "}
-            <span className="text-[#2563eb]">Marketplace</span>,{" "}
-            <span className="text-[#22c55e]">Fractional Ownership</span> &{" "}
-            <span className="text-[#1e40af]">Fundraising</span>
+          <h1 className="mx-auto max-w-2xl text-[28px] font-bold leading-[1.2] sm:text-[34px] md:text-[40px] lg:mx-0 lg:text-[42px] xl:text-[48px]">
+            <span className="text-[#3A3A3A]">
+              Build Powerful Digital Platforms for
+            </span>
+            <br className="hidden sm:block" />
+            <span className="text-[#36A35C] word-underline word-people">
+              People
+            </span>
+            <span className="text-[#2F5FAA]"> | </span>
+            <span className="text-[#2F5FAA] word-underline word-platforms">
+              Platforms
+            </span>
+            <span className="text-[#2F5FAA]"> | </span>
+            <span className="text-[#36A35C] word-underline word-products">
+              Products
+            </span>
+            <span className="text-[#2F5FAA]"> | </span>
+            <span className="text-[#2F5FAA] word-underline word-capital">
+              Capital
+            </span>
           </h1>
 
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#475569] sm:text-base md:text-lg lg:mx-0">
-            <span className="font-bold text-[#16a34a]">OXYGLOBAL.TECH</span> is
-            a forward-thinking software technology company delivering modern,
-            scalable, and secure platforms using the latest innovations for real
-            business growth.
+          <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-[#3A3A3A] sm:text-base md:text-lg lg:mx-0 lg:max-w-xl">
+            <span className="font-semibold text-[#36A35C]">OXYGLOBAL.TECH</span>{" "}
+            is a forward-thinking software technology company building modern,
+            scalable digital ecosystems connecting people, platforms, products,
+            and capital for global innovation.
           </p>
 
-          <div className="mx-auto mt-6 h-1.5 w-20 rounded-full bg-[#22c55e] lg:mx-0" />
-
-          <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-[#334155] sm:text-base md:text-lg lg:mx-0">
-            We integrate{" "}
-            <span className="font-bold text-[#1e3a8a]">Blockchain</span> to
-            create a single source of truth, ensuring transparency, trust, and
-            operational efficiency across digital ecosystems.
+          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#3A3A3A] sm:text-base md:text-lg lg:mx-0 lg:max-w-xl">
+            Our platforms integrate advanced technologies including{" "}
+            <span className="font-semibold text-[#2F5FAA]">Blockchain</span>,
+            ensuring transparency, trust, and efficiency across digital
+            ecosystems.
           </p>
-
-          {/* Buttons */}
-          <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:justify-center lg:justify-start">
-            <button className="rounded-full bg-[#2563eb] px-6 py-3 text-sm font-semibold text-white shadow-md transition duration-300 hover:bg-[#1d4ed8]">
-              Get Started
-            </button>
-            <button className="rounded-full border border-[#cbd5e1] bg-white px-6 py-3 text-sm font-semibold text-[#1e293b] transition duration-300 hover:border-[#2563eb] hover:text-[#2563eb]">
-              Learn More
-            </button>
-          </div>
         </div>
 
-        {/* Right Image */}
-        <div className="order-2 flex justify-center lg:order-2 lg:justify-end">
-          <div className="relative w-full max-w-[280px] sm:max-w-[360px] md:max-w-[440px] lg:max-w-[520px] xl:max-w-[560px]">
-            {/* Outer card */}
-            <div className="rounded-[28px] bg-white/70 p-3 shadow-[0_20px_60px_rgba(37,99,235,0.12)] backdrop-blur-sm">
-              <div className="overflow-hidden rounded-[24px] bg-gradient-to-br from-[#eff6ff] via-white to-[#e0f2fe] p-3">
-                <img
-                  src={HEROIMAGE}
-                  alt="Founder"
-                  className="w-full rounded-[20px] object-contain"
-                />
-              </div>
-            </div>
-
-            {/* Floating badge 1 */}
-            <div className="absolute -left-6 top-10 hidden rounded-2xl bg-white px-4 py-3 shadow-xl md:block">
-              <p className="text-xs font-medium text-slate-500">Trusted Tech</p>
-              <p className="text-sm font-bold text-[#1e3a8a]">
-                Modern Platforms
-              </p>
-            </div>
-
-            {/* Floating badge 2 */}
-            <div className="absolute -bottom-5 right-0 hidden rounded-2xl bg-white px-4 py-3 shadow-xl md:block">
-              <p className="text-xs font-medium text-slate-500">Powered by</p>
-              <p className="text-sm font-bold text-[#16a34a]">Blockchain</p>
+        {/* RIGHT IMAGE - now second on mobile */}
+        <div className="order-2 flex items-center justify-center lg:order-2 lg:justify-center">
+          <div className="flex w-full justify-center">
+            <div className="w-full max-w-[260px] sm:max-w-[320px] md:max-w-[380px] lg:max-w-[430px] xl:max-w-[470px]">
+              <img
+                src={HEROIMAGE}
+                alt="Founder"
+                className="mx-auto w-full object-contain"
+              />
             </div>
           </div>
         </div>
