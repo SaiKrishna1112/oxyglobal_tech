@@ -121,47 +121,42 @@ const OxyGlobalHero: React.FC = () => {
       />
 
       <div className="relative mx-auto grid max-w-7xl grid-cols-1 items-center gap-10 lg:grid-cols-2 lg:gap-12 xl:gap-16">
-        {/* LEFT CONTENT - now first on mobile */}
-        <div className="order-1 text-center lg:order-1 lg:text-left">
-          <p className="mb-4 inline-block rounded-full border border-[#2F5FAA]/20 bg-white px-4 py-2 text-[11px] font-semibold tracking-[0.18em] text-[#2F5FAA] shadow-sm sm:text-xs">
-            FUTURE READY SOFTWARE TECHNOLOGY
+        <div className="order-1 flex flex-col items-center text-center lg:items-start lg:text-left">
+          <p className="mt-5 max-w-[95%] text-[14px] leading-6 text-[#3A3A3A] sm:max-w-2xl sm:text-[15px] sm:leading-7 md:text-[16px] lg:max-w-xl lg:text-[17px] xl:text-[18px]">
+            <span className="font-semibold text-[#111827]">
+              OXYGLOBAL TECHNOLOGIES{" "}
+            </span>{" "}
+            is a global software technology company building modern, scalable
+            digital ecosystems that connect people, platforms, products, and
+            capital for global innovation.
           </p>
 
-          <h1 className="mx-auto max-w-2xl text-[28px] font-bold leading-[1.2] sm:text-[34px] md:text-[40px] lg:mx-0 lg:text-[42px] xl:text-[48px]">
-            <span className="text-[#3A3A3A]">
-              Build Powerful Digital Platforms for
-            </span>
-            <br className="hidden sm:block" />
-            <span className="text-[#36A35C] word-underline word-people">
-              People
-            </span>
-            <span className="text-[#2F5FAA]"> | </span>
-            <span className="text-[#2F5FAA] word-underline word-platforms">
-              Platforms
-            </span>
-            <span className="text-[#2F5FAA]"> | </span>
-            <span className="text-[#36A35C] word-underline word-products">
-              Products
-            </span>
-            <span className="text-[#2F5FAA]"> | </span>
-            <span className="text-[#2F5FAA] word-underline word-capital">
-              Capital
-            </span>
-          </h1>
-
-          <p className="mx-auto mt-6 max-w-2xl text-sm leading-7 text-[#3A3A3A] sm:text-base md:text-lg lg:mx-0 lg:max-w-xl">
-            <span className="font-semibold text-[#36A35C]">OXYGLOBAL.TECH</span>{" "}
-            is a forward-thinking software technology company building modern,
-            scalable digital ecosystems connecting people, platforms, products,
-            and capital for global innovation.
-          </p>
-
-          <p className="mx-auto mt-5 max-w-2xl text-sm leading-7 text-[#3A3A3A] sm:text-base md:text-lg lg:mx-0 lg:max-w-xl">
+          <p className="mt-4 max-w-[95%] text-[14px] leading-6 text-[#3A3A3A] sm:max-w-2xl sm:text-[15px] sm:leading-7 md:text-[16px] lg:max-w-xl lg:text-[17px] xl:text-[18px]">
             Our platforms integrate advanced technologies including{" "}
             <span className="font-semibold text-[#2F5FAA]">Blockchain</span>,
-            ensuring transparency, trust, and efficiency across digital
-            ecosystems.
+            enabling transparency, trust, and efficiency across connected
+            digital ecosystems.
           </p>
+
+          <h1 className="mt-7 max-w-[95%] text-[26px] font-extrabold leading-[1.15] tracking-[-0.03em] sm:max-w-3xl sm:text-[34px] md:text-[42px] lg:mt-9 lg:max-w-4xl lg:text-[50px] xl:text-[58px]">
+            <span className="inline-flex flex-wrap items-center justify-center gap-x-2 gap-y-2 lg:justify-start">
+              <span className="text-[#2F5FAA] word-underline word-people">
+                People
+              </span>
+              <span className="px-1 text-[#C4CAD4] sm:px-2">|</span>
+              <span className="text-[#36A35C] word-underline word-platforms">
+                Platforms
+              </span>
+              <span className="px-1 text-[#C4CAD4] sm:px-2">|</span>
+              <span className="text-[#6B7280] word-underline word-products">
+                Products
+              </span>
+              <span className="px-1 text-[#C4CAD4] sm:px-2">|</span>
+              <span className="text-[#F97316] word-underline word-capital">
+                Capital
+              </span>
+            </span>
+          </h1>
         </div>
 
         {/* RIGHT IMAGE - now second on mobile */}

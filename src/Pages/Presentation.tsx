@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion, type Variants, AnimatePresence } from "framer-motion";
-import { X } from "lucide-react";
+import { X, ExternalLink } from "lucide-react";
 import Header from "../LandingPage/Header";
 import OxyGlobalFooter from "../LandingPage/Footer";
 
@@ -23,13 +23,13 @@ const presentations: Presentation[] = [
     subtitle: "OXYGLOBAL.TECH",
     title: "Corporate Presentation",
     description:
-      "Explore our business ecosystem, vision, and growth model across People, Platforms, Products, and caPital.",
+      "Explore our business ecosystem, vision, and growth model across People, Platforms, Products, and Capital.",
     points: [
       "Company overview and ecosystem",
       "Technology platforms and business model",
       "Strategic growth and partnerships",
     ],
-    image: "https://i.ibb.co/tPKc2qmx/present-1.png",
+    image: "https://i.ibb.co/d0BTYQWC/present-1.png",
     imageAlt: "Corporate presentation preview",
     buttonText: "View Presentation",
     driveLink:
@@ -48,13 +48,13 @@ const presentations: Presentation[] = [
       "Innovation ecosystem access",
       "Scalable AI venture opportunities",
     ],
-    image: "https://i.ibb.co/SX43c1rY/present-2.png",
+    image: "https://i.ibb.co/TBZB36Gy/present-2.png",
     imageAlt: "Mission Million AI Cofounders preview",
     buttonText: "Explore Presentation",
     driveLink:
-      "https://drive.google.com/file/d/1CAuC2PMF7aaTkjNzRpu3jlzez3cLggEt/view?usp=drive_link",
+      "https://drive.google.com/file/d/1wOp_3mr9LHEWsL7BIjR9de0WIgrH9dYE/view?usp=drive_link",
     embedLink:
-      "https://drive.google.com/file/d/1CAuC2PMF7aaTkjNzRpu3jlzez3cLggEt/preview",
+      "https://drive.google.com/file/d/1wOp_3mr9LHEWsL7BIjR9de0WIgrH9dYE/preview",
   },
 ];
 
@@ -63,10 +63,7 @@ const fadeUp: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.7,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.7, ease: "easeOut" },
   },
 };
 
@@ -75,10 +72,7 @@ const fadeLeft: Variants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: {
-      duration: 0.75,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.75, ease: "easeOut" },
   },
 };
 
@@ -87,19 +81,14 @@ const fadeRight: Variants = {
   visible: {
     opacity: 1,
     x: 0,
-    transition: {
-      duration: 0.75,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.75, ease: "easeOut" },
   },
 };
 
 const staggerContainer: Variants = {
   hidden: {},
   visible: {
-    transition: {
-      staggerChildren: 0.14,
-    },
+    transition: { staggerChildren: 0.14 },
   },
 };
 
@@ -108,10 +97,7 @@ const itemFade: Variants = {
   visible: {
     opacity: 1,
     y: 0,
-    transition: {
-      duration: 0.55,
-      ease: "easeOut",
-    },
+    transition: { duration: 0.55, ease: "easeOut" },
   },
 };
 
@@ -137,9 +123,41 @@ const modalContent: Variants = {
   },
 };
 
+const previewSwapVariants: Variants = {
+  hidden: {
+    opacity: 0,
+    scale: 0.96,
+    y: 18,
+  },
+  visible: {
+    opacity: 1,
+    scale: 1,
+    y: 0,
+    transition: {
+      duration: 0.45,
+      ease: "easeOut",
+    },
+  },
+  exit: {
+    opacity: 0,
+    scale: 1.02,
+    y: -12,
+    transition: {
+      duration: 0.28,
+      ease: "easeInOut",
+    },
+  },
+};
+
 const PresentationsSection: React.FC = () => {
   const [selectedPresentation, setSelectedPresentation] =
     useState<Presentation | null>(null);
+
+  const [openedPreviewId, setOpenedPreviewId] = useState<number | null>(null);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   useEffect(() => {
     if (selectedPresentation) {
@@ -201,13 +219,14 @@ const PresentationsSection: React.FC = () => {
                 const reverse = index % 2 === 1;
                 const imageVariant = reverse ? fadeRight : fadeLeft;
                 const contentVariant = reverse ? fadeLeft : fadeRight;
+                const isPreviewOpen = openedPreviewId === item.id;
 
                 return (
                   <div
                     key={item.id}
                     className="grid items-center gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16 xl:gap-20"
                   >
-                    {/* Image Side */}
+                    {/* Image / PDF Preview Side */}
                     <motion.div
                       initial="hidden"
                       whileInView="visible"
@@ -215,14 +234,96 @@ const PresentationsSection: React.FC = () => {
                       variants={imageVariant}
                       className={reverse ? "lg:order-2" : ""}
                     >
-                      <div className="relative mx-auto flex w-full max-w-[560px] items-center justify-center">
-                        <motion.img
-                          src={item.image}
-                          alt={item.imageAlt}
-                          whileHover={{ y: -4, scale: 1.01 }}
-                          transition={{ duration: 0.28 }}
-                          className="w-full max-h-[260px] rounded-[10px] object-contain shadow-[0px_18px_40px_rgba(0,0,0,0.10)] sm:max-h-[320px] md:max-h-[360px] lg:max-h-[400px] xl:max-h-[420px]"
-                        />
+                      <div className="relative mx-auto w-full max-w-[560px]">
+                        <div className="overflow-hidden rounded-[14px] border border-[#e5e7eb] bg-white shadow-[0px_18px_40px_rgba(0,0,0,0.10)]">
+                          <div className="relative h-[260px] sm:h-[320px] md:h-[360px] lg:h-[400px] xl:h-[420px]">
+                            <AnimatePresence mode="wait">
+                              {!isPreviewOpen ? (
+                                <motion.div
+                                  key={`image-${item.id}`}
+                                  variants={previewSwapVariants}
+                                  initial="hidden"
+                                  animate="visible"
+                                  exit="exit"
+                                  className="relative h-full w-full cursor-pointer"
+                                  onClick={() => setOpenedPreviewId(item.id)}
+                                >
+                                  <img
+                                    src={item.image}
+                                    alt={item.imageAlt}
+                                    className="h-full w-full object-cover object-center"
+                                  />
+
+                                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
+                                  <div className="absolute inset-x-0 bottom-0 flex items-end justify-between gap-3 px-4 py-4 sm:px-5 sm:py-5">
+                                    <div className="min-w-0">
+                                      <h4 className="mt-1 text-sm font-semibold text-white sm:text-base">
+                                        {item.title}
+                                      </h4>
+                                    </div>
+
+                                    <motion.button
+                                      whileHover={{ y: -2, scale: 1.03 }}
+                                      whileTap={{ scale: 0.96 }}
+                                      onClick={(e) => {
+                                        e.stopPropagation();
+                                        setOpenedPreviewId(item.id);
+                                      }}
+                                      className="inline-flex flex-shrink-0 items-center gap-2 rounded-full bg-white px-4 py-2 text-xs font-semibold text-[#111827] shadow-sm sm:text-sm"
+                                    >
+                                      Open Preview
+                                      <ExternalLink size={15} />
+                                    </motion.button>
+                                  </div>
+                                </motion.div>
+                              ) : (
+                                <motion.div
+                                  key={`pdf-${item.id}`}
+                                  variants={previewSwapVariants}
+                                  initial="hidden"
+                                  animate="visible"
+                                  exit="exit"
+                                  className="relative h-full w-full bg-[#f8fafc]"
+                                >
+                                  <iframe
+                                    src={item.embedLink}
+                                    title={item.title}
+                                    className="h-full w-full"
+                                    allow="autoplay"
+                                  />
+
+                                  <div className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 bg-gradient-to-t from-black/70 via-black/25 to-transparent px-4 py-4 sm:px-5 sm:py-5">
+                                    <div className="min-w-0">
+                                      <p className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80 sm:text-xs">
+                                        Presentation Preview
+                                      </p>
+                                      <h4 className="mt-1 truncate text-sm font-semibold text-white sm:text-base">
+                                        {item.title}
+                                      </h4>
+                                    </div>
+
+                                    <div className="flex flex-shrink-0 items-center gap-2">
+                                      <button
+                                        onClick={() => setOpenedPreviewId(null)}
+                                        className="rounded-full bg-white/90 px-4 py-2 text-xs font-semibold text-[#111827] backdrop-blur sm:text-sm"
+                                      >
+                                        Back
+                                      </button>
+
+                                      <button
+                                        onClick={() => setSelectedPresentation(item)}
+                                        className="rounded-full bg-[#2F5FAA] px-4 py-2 text-xs font-semibold text-white sm:text-sm"
+                                      >
+                                        Full View
+                                      </button>
+                                    </div>
+                                  </div>
+                                </motion.div>
+                              )}
+                            </AnimatePresence>
+                          </div>
+                        </div>
                       </div>
                     </motion.div>
 
@@ -293,7 +394,7 @@ const PresentationsSection: React.FC = () => {
 
       <OxyGlobalFooter />
 
-      {/* Modal */}
+      {/* Full Modal */}
       <AnimatePresence>
         {selectedPresentation && (
           <motion.div
@@ -312,14 +413,13 @@ const PresentationsSection: React.FC = () => {
               onClick={(e) => e.stopPropagation()}
               className="relative flex h-[92vh] w-full max-w-6xl flex-col overflow-hidden rounded-[18px] bg-white shadow-[0_20px_60px_rgba(0,0,0,0.28)]"
             >
-              {/* Modal Header */}
               <div className="flex items-center justify-between border-b border-[#e5e7eb] px-4 py-3 sm:px-5 sm:py-4">
                 <div className="min-w-0 pr-3">
                   <h3 className="truncate text-base font-semibold text-[#111827] sm:text-lg">
                     {selectedPresentation.title}
                   </h3>
                   <p className="mt-1 text-[12px] text-[#6b7280] sm:text-[13px]">
-                    View presentation in modal
+                    Full presentation view
                   </p>
                 </div>
 
@@ -343,7 +443,6 @@ const PresentationsSection: React.FC = () => {
                 </div>
               </div>
 
-              {/* Mobile top action */}
               <div className="border-b border-[#eef2f7] px-4 py-2 sm:hidden">
                 <a
                   href={selectedPresentation.driveLink}
@@ -355,7 +454,6 @@ const PresentationsSection: React.FC = () => {
                 </a>
               </div>
 
-              {/* Modal Body */}
               <div className="flex-1 bg-[#f8fafc]">
                 <iframe
                   src={selectedPresentation.embedLink}
